@@ -49,7 +49,7 @@ if "%INPUT%" == "2" goto :disassemble
 if "%INPUT%" == "9" goto :theend
 
 if not exist Disassembled (
-    echo [INFO] You need disassemble apk before catch info, use 2 on menu
+    echo [INFO] You need to disassemble the apk, use 2 on menu or 9 to exit
     goto :loop
 ) else (
     if "%INPUT%" == "1" goto :apkinfo
