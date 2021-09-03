@@ -9,7 +9,9 @@ You can:
 5) Replace a string contained in a specific smali file with another string taken as input
 6) Try to remove ssl pinning
 7) Search for any files that contain apk signature verification
-8) Rebuild apk
+8) Search references to javiersantos piracycheck
+9) Rebuild apk
+10) Exit
 
 TODO: add more patches
 
