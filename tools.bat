@@ -39,14 +39,14 @@ if %ERRORLEVEL% NEQ 0 (
     exit
 )
 
-set "OPTIONS=!\n!Select one of this options:!\n!1) Display information about an apk!\n!2) Disassemble an apk to convert it to smali code!\n!3) Switch enable/disable extractNativeLibs!\n!4) It shows the name of the file in which a string is contained from the input, you can use the regex!\n!5) Replace a string contained in a specific smali file with another string taken as input!\n!6) Try to remove ssl pinning!\n!7) Search for any files that contain apk signature verification!\n!8) Rebuild apk!\n!9) Exit!\n!"
+set "OPTIONS=!\n!Select one of this options:!\n!1) Display information about an apk!\n!2) Disassemble an apk to convert it to smali code!\n!3) Switch enable/disable extractNativeLibs!\n!4) It shows the name of the file in which a string is contained from the input, you can use the regex!\n!5) Replace a string contained in a specific smali file with another string taken as input!\n!6) Try to remove ssl pinning!\n!7) Search for any files that contain apk signature verification!\n!8) Search references to javiersantos piracycheck!\n!9) Rebuild apk!\n!10) Exit!\n!"
 
 :loop
 echo !OPTIONS!
 set /p INPUT=Your select: %=%
 
 if "%INPUT%" == "2" goto :disassemble
-if "%INPUT%" == "9" goto :theend
+if "%INPUT%" == "10" goto :theend
 
 if not exist Disassembled (
     echo [INFO] You need to disassemble the apk, use 2 on menu or 9 to exit
@@ -58,7 +58,8 @@ if not exist Disassembled (
     if "%INPUT%" == "5" goto :replacestring
     if "%INPUT%" == "6" goto :sslunpinning
     if "%INPUT%" == "7" goto :searchsignatures
-    if "%INPUT%" == "8" goto :rebuildapk
+    if "%INPUT%" == "8" goto :javiersantos_piracycheck
+    if "%INPUT%" == "9" goto :rebuildapk
 )
 
 echo command not found
@@ -90,6 +91,10 @@ goto :loop
 
 :searchsignatures
 call "./patch/batch/searchsignatures.bat"
+goto :loop
+
+:javiersantos_piracycheck
+call "./patch/batch/javiersantos_piracycheck.bat"
 goto :loop
 
 :rebuildapk
